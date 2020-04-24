@@ -1,0 +1,60 @@
+#!/usr/bin/python
+
+from stat import S_ISREG, ST_CTIME, ST_MTIME, ST_MODE
+import os, sys, time
+import datetime
+if sys.version_info[0] < 3:
+        import commands as cmd
+else:
+        import subprocess as cmd
+
+def html_header():
+	print "Content-type:text/html\r\n\r\n"
+	print '<html>'
+	print '<head>'
+	print '<title>SONIC Releases</title>'
+	print '<style>'
+	print '      table, th, td {'
+	print '      	padding: 10px;'
+	print '      	border: 1px solid black;'
+	print '      	border-collapse: collapse;'
+        print '         background-color: aqua; border-color: red blue gold teal;'
+	print '      }'
+        print '      body {'
+        print '        background-color: linen;'
+        print '      }'
+        print '      h1 {'
+        print '        color: maroon;'
+        print '        margin-left: 40px;'
+        print '      }'
+	print '</style>'
+	print '</head>'
+	print '<body>'
+	print '<h4> Now:',datetime.datetime.now(),'</h4>'
+
+def html_footer():
+	print '</body>'
+	print '</html>'
+
+def counter(): 
+        print '<br>'
+        print '<hr>'
+        print '<h2> Counters DB</h2>'
+        print '<pre>'
+        ret, output = cmd.getstatusoutput('for k in `echo "keys COUNTERS*" | redis-cli -n 2`; do echo "<b><i> $k </i><b>"; redis-cli -n 2 hgetall $k; done')
+        print output
+        print '</pre>'
+        print '<br>'
+        print '<hr>'
+        print '<br>'
+
+def main():
+	html_header()
+        counter()
+	html_footer()
+
+#########################################
+#
+# ENTRY TO THIS SCRIPT
+##########################################
+main()
