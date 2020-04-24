@@ -5,7 +5,7 @@ Example to start Web server in Azure sonic-buildimage
 
 docker-bigfoot - container for web server
 
-
+```
 make target/docker-bigfoot.gz
 
 
@@ -49,4 +49,4 @@ root       111   106  0 17:38 pts/1    00:00:00 ps -ef
 http://<BoardIP>/
 http://<BoardIP>/cgi-bin/bigfoot-counter
 http://<BoardIP>/cgi-bin/bigfoot-counter-db
-
+```
