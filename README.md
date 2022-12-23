@@ -45,7 +45,8 @@ root       111   106  0 17:38 pts/1    00:00:00 ps -ef
 
 
 
-
+# Testing:
+# Get the SONIC counters from the web
 http://<BoardIP>/
 http://<BoardIP>/cgi-bin/bigfoot-counter
 http://<BoardIP>/cgi-bin/bigfoot-counter-db
